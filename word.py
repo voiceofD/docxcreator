@@ -120,7 +120,7 @@ def addimage(document):
     while True:
         try:
             location = input("Path to the image: ") or "test.jpg"
-            document.add_picture(location, Inches(7), Inches(4))
+            document.add_picture(location, width = Inches(6))
             document.add_paragraph()
             break
         except:
