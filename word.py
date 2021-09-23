@@ -1,5 +1,6 @@
 #Program to create automated Word Templates/Documents
 
+#Import the dependencies
 import docx
 from docx.shared import Cm, Inches, Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -272,6 +273,14 @@ def record(document):
 #Save the document
 def savedoc(document):
     name = input('What should the file be saved as?: ') or "New File"
+    finalname = ""
+    for i in name:
+        if i in ['\\','/',':','*','?','"','<','>','|']:
+            continue
+        else:
+            finalname += i
+    if finalname == "":
+        finalname = "New File"
     document.save(name + ".docx")
     
 #Run the program
@@ -308,7 +317,6 @@ while True:
         
 ''' The above snippet is dependent on the following additional packages: python-docx; docxcompose;
 The following 'bugs' have been observed
---> The margins bug: The margins defined after recorded section will affect the recorded section
---> The save bug: Word documents can't be saved with certain characters. This program has no such filters
+--> The margins bug: The margins defined after recorded section will affect the recorded section: Can be rectified by adding a section break functionality (Or record instruction only 1 time to define margin)
 The scope for further development are as follows:
 --> Add features for section breaks, page borders, font colors, headers/footers, enter table values, edit existing documents'''
