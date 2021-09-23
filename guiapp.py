@@ -661,7 +661,7 @@ def record(document):
     
     record_window.mainloop()
 
-#Saving the document - #Change the isalnum functionality. Try implementing asksavefileas
+#Saving the document
 def savedoc(document):
     decision = messagebox.askokcancel("Important!", "This will save your changes and close the program. Do you want to continue?")
     if decision:
@@ -713,3 +713,7 @@ filler4 = Label(mframe, text = "          ", pady = 15).grid(row = 3)
 filler5 = Label(mframe, text = "          ", pady = 15).grid(row = 5)
 root.protocol("WM_DELETE_WINDOW", quitprogram)
 root.mainloop()
+
+#The following bug has been observed in this program:
+#Even though the new widgets/windows are supposed to be on the top level, by giving a bad input while uploading an image will remove that feature. The program will still work.
+#By providing repeated bad inputs to the coverpage while recording instructions, the main widget is enabled at times, allowing the user to prematurely end the program without actually using the recorded instructions
